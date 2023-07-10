@@ -3,4 +3,5 @@
 .config/*
 !.config/nvim
 .config/nvim/plugged
+.config/nvim/plugin
 !.gitignore

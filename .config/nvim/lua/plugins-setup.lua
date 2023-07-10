@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	}) -- saves and restores sessions
 
 	use("tpope/vim-surround") -- add, delete, change surroundings (it's awesome)
+	use("tpope/vim-fugitive") -- git wrapper
 	use("vim-scripts/ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
 	use("tpope/vim-commentary") -- commenting with gc
