@@ -2,6 +2,7 @@
 !.config
 .config/*
 !.config/nvim
+!.config/alacritty
 .config/nvim/plugged
 .config/nvim/plugin
 !.gitignore
