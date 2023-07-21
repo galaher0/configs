@@ -45,7 +45,7 @@ return packer.startup(function(use)
 		config = function()
 			require("auto-session").setup({
 				log_level = "error",
-				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+				auto_session_suppress_dirs = { "~/Projects", "~/Downloads", "/" },
 			})
 		end,
 	}) -- saves and restores sessions
@@ -54,6 +54,19 @@ return packer.startup(function(use)
 	use("tpope/vim-fugitive") -- git wrapper
 	use("vim-scripts/ReplaceWithRegister") -- replace with register contents using motion (gr + motion)
 
+	-- Useful plugin to show you pending keybinds.
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+			require("which-key").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 	use("tpope/vim-commentary") -- commenting with gc
 
 	use("nvim-tree/nvim-tree.lua") -- file explorer
@@ -84,12 +97,21 @@ return packer.startup(function(use)
 
 	-- configuring lsp servers
 	use("neovim/nvim-lspconfig") -- easily configure language servers
+	-- Useful status updates for LSP
+	-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+	use({
+		"j-hui/fidget.nvim",
+		-- tag = "legacy",
+		requires = { "neovim/nvim-lspconfig" },
+		opts = {},
+		-- config = function()
+		-- 	require("fidget").setup({})
+		-- end,
+	})
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-		opt = true,
-		event = "LspAttach",
+		"nvimdev/lspsaga.nvim",
+		after = "nvim-lspconfig",
 		config = function()
 			require("lspsaga").setup({})
 		end,
