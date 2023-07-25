@@ -1,9 +1,11 @@
 /*
 !.config
-!.tmux
 .config/*
 !.config/nvim
-!.config/alacritty
 .config/nvim/plugged
 .config/nvim/plugin
+!.config/alacritty
+!.tmux
+.tmux/*
+!.tmux/tmux.conf
 !.gitignore
